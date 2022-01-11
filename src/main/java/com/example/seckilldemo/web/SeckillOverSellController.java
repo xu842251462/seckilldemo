@@ -1,6 +1,5 @@
 package com.example.seckilldemo.web;
 
-import com.example.seckilldemo.services.SeckillActivityService;
 import com.example.seckilldemo.services.SeckillOverSellService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,35 +9,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SeckillOverSellController {
-
     @Autowired
     private SeckillOverSellService seckillOverSellService;
-
-
-    @Autowired
-    private SeckillActivityService seckillActivityService;
-
     /**
      * 简单 处理抢购请求
      * @param seckillActivityId
      * @return
      */
     @ResponseBody
-//    @RequestMapping("/seckill/{seckillActivityId}")
-    public String  seckil(@PathVariable long seckillActivityId){
-       return seckillOverSellService.processSeckill(seckillActivityId);
-    }
-
-    /**
-     * 使用 lua 脚本处理抢购请求
-     * @param seckillActivityId
-     * @return
-     */
-    @ResponseBody
     @RequestMapping("/seckill/{seckillActivityId}")
-    public String seckillCommodity(@PathVariable long seckillActivityId) {
-        boolean stockValidateResult = seckillActivityService.seckillStockValidator(seckillActivityId);
-        return stockValidateResult ? "恭喜你秒杀成功" : "商品已经售完，下次再来";
+    public String seckil(@PathVariable long seckillActivityId){
+        return seckillOverSellService.processSeckill(seckillActivityId);
     }
 
 }

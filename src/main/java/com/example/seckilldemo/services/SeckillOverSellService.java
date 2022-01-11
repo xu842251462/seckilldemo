@@ -1,5 +1,6 @@
 package com.example.seckilldemo.services;
 
+
 import com.example.seckilldemo.db.dao.SeckillActivityDao;
 import com.jiuzhang.seckill.db.po.SeckillActivity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class SeckillOverSellService {
     @Autowired
     private SeckillActivityDao seckillActivityDao;
-
-    public String  processSeckill(long activityId) {
-        SeckillActivity seckillActivity = seckillActivityDao.querySeckillActivityById(activityId);
+    public String processSeckill(long activityId) {
+        SeckillActivity seckillActivity =
+                seckillActivityDao.querySeckillActivityById(activityId);
         long availableStock = seckillActivity.getAvailableStock();
         String result;
         if (availableStock > 0) {
@@ -26,4 +27,5 @@ public class SeckillOverSellService {
         }
         return result;
     }
+
 }

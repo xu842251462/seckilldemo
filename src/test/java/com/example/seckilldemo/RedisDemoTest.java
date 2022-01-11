@@ -13,8 +13,19 @@ public class RedisDemoTest {
     private RedisService redisService;
 
     @Test
+    public void setTest(){
+        redisService.setValue("age",100L);
+    }
+
+    @Test
+    public void  getTest(){
+        String age =  redisService.getValue("age");
+        System.out.println(age);
+    }
+
+    @Test
     public void  stockTest(){
-        redisService.setValue("stock:14",10L);
+        redisService.setValue("stock:19",10L);
     }
 
     @Test
@@ -25,9 +36,9 @@ public class RedisDemoTest {
 
     @Test
     public void stockDeductValidatorTest(){
-      boolean result =  redisService.stockDeductValidator("stock:19");
+      boolean result =  redisService.stockDeductValidator("stock:12");
       System.out.println("result:"+result);
-      String stock =  redisService.getValue("stock:19");
+      String stock =  redisService.getValue("stock:12");
       System.out.println("stock:"+stock);
     }
 
