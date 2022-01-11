@@ -1,22 +1,20 @@
 package com.example.seckilldemo;
 
-import com.example.seckilldemo.dao.SeckillActivityDao;
+import com.example.seckilldemo.db.dao.SeckillActivityDao;
 import com.jiuzhang.seckill.db.mappers.SeckillActivityMapper;
 import com.jiuzhang.seckill.db.po.SeckillActivity;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.List;
 
 @SpringBootTest
 public class DaoTest {
     @Resource
     private SeckillActivityMapper seckillActivityMapper;
-    @Autowired
-    private SeckillActivityDao seckillActivityDao;
+//    @Autowired
+//    private SeckillActivityDao seckillActivityDao;
     @Test
     void SeckillActivityTest() {
         SeckillActivity seckillActivity = new SeckillActivity();
@@ -32,12 +30,12 @@ public class DaoTest {
         System.out.println("====>>>>" +
                 seckillActivityMapper.selectByPrimaryKey(1L));
     }
-    @Test
-    void setSeckillActivityQuery(){
-        List<SeckillActivity> seckillActivitys =
-                seckillActivityDao.querySeckillActivitysByStatus(0);
-        System.out.println(seckillActivitys.size());
-        seckillActivitys.stream().forEach(seckillActivity ->
-                System.out.println(seckillActivity.toString()));
-    }
+//    @Test
+//    void setSeckillActivityQuery(){
+//        List<SeckillActivity> seckillActivitys =
+//                seckillActivityDao.querySeckillActivitysByStatus(0);
+//        System.out.println(seckillActivitys.size());
+//        seckillActivitys.stream().forEach(seckillActivity ->
+//                System.out.println(seckillActivity.toString()));
+//    }
 }
